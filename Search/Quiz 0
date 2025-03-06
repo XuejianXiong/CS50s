@@ -1,0 +1,11 @@
+1) Between depth first search (DFS) and breadth first search (BFS), which will find a shorter path through a maze?
+
+DFS will always find a shorter path than BFS
+
+BFS will always find a shorter path than DFS
+
+DFS will sometimes, but not always, find a shorter path than BFS
+
+BFS will sometimes, but not always, find a shorter path than DFS
+
+Both algorithms will always find paths of the same length
