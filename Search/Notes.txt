@@ -1,0 +1,11 @@
+Terms:
+1) agent
+2) state
+3) actions
+4) transition model
+5) state space
+6) goal test
+7) path cost
+8) solution
+9) optimal solution
+10) node: a data strcture that keeps track of a state, a parent (node that generated this node), an action (applied to parent to get this node), and a path cost (from initial state to node)
