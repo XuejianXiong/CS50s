@@ -116,30 +116,57 @@ def shortest_path(source, target):
 
         # If node is the target, then we find the connection
         if node.state == target:
-            actions = []
-            cells = []
-            while node.parent is not None:
-                actions.append(node.action)
-                cells.append(node.state)
-                node = node.parent
-            actions.reverse()
-            cells.reverse()
-            solution = (actions, cells)
-            path = list(zip(solution[0], solution[1]))
+            path = export_path(node)
             print(f"The connection is: {path}")
             return path
 
         # Mark node as explored
         explored_actors.add(node.state)
+        #print(f"The explored actors: {explored_actors}")
 
-        # Add neighbors to frontier
+        # Find neighbors
         neighbors = neighbors_for_person(node.state)
-        for action, state in neighbors:
-            if not frontier.contains_state(state) and state not in explored_actors:
-                child = Node(state=state, parent=node, action=action)
-                frontier.add(child)
-                
+        #print(f"The neighbors: {neighbors}")
+
+        # Check if target is found in neighbors
+        target_found = next((item for item in neighbors if target in item), None)
+        #print(f"Found the target: {target_found}")
+
+        if target_found == None: # if not find target in neighbors
+            for action, state in neighbors:
+                if not frontier.contains_state(state) and state not in explored_actors:
+                    child = Node(state=state, parent=node, action=action)
+                    frontier.add(child)
+        else: # if find target in neighbors
+            node = Node(state=target_found[1], parent=node, action=target_found[0])            
+            path = export_path(node)
+            #print(f"The connection is: {path}")
+            return path
+
     raise NotImplementedError
+
+
+def export_path(node):
+    """
+    Returns the connection path from source to target
+    """
+
+    actions = []
+    cells = []
+
+    while node.parent is not None:
+        actions.append(node.action)
+        cells.append(node.state)
+        node = node.parent
+
+    actions.reverse()
+    cells.reverse()
+
+    solution = (actions, cells)
+    
+    path = list(zip(solution[0], solution[1]))
+    
+    return path
 
 
 def person_id_for_name(name):
