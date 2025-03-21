@@ -9,3 +9,25 @@ Terms:
 8) solution
 9) optimal solution
 10) node: a data strcture that keeps track of a state, a parent (node that generated this node), an action (applied to parent to get this node), and a path cost (from initial state to node)
+
+
+Methods:
+1) uninformed search: Depth-First Search, Breadth-first Search
+2) unformed search: greedy best-fit search h(n), A* search h(n)+g(n)
+
+Code Algorithm:
+MinMax
+
+Optimization:
+1) Alpha-Beta prunning
+2) Depth-limited MinMax
+
+
+Project:
+1) Degree: Six Degrees of Kevin Bacon
+
+use check50 --local ai50/projects/2024/x/degrees to test this work
+use submit50 ai50/projects/2024/x/degrees to submit this work to CS50
+
+2) Tic-Tac-Toe
+
